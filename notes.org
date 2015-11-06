@@ -1,0 +1,157 @@
+* Micromonkeys notes
+** Presentation hints
+*** Analogies
+    Monolith -> http://www.thefreedictionary.com/Hyperonym
+    Microsvc -> http://www.thefreedictionary.com/Meronymy
+
+
+*** Inspirations
+    https://www.linkedin.com/pulse/20140604121818-6461201-seven-micro-services-architecture-problems-and-solutions
+    http://martinfowler.com/articles/microservices.html
+    http://highscalability.com/blog/2014/4/8/microservices-not-a-free-lunch.html
+    http://java.dzone.com/articles/service-disoriented
+
+    ELK:
+    http://evanhazlett.com/2014/11/Logging-with-ELK-and-Docker/
+
+    HTTP Queue:
+    https://github.com/gleicon/restmq
+
+    - Fake architects conversation
+      Arnold: Hey Bart, hoe gaat het? Are you doing anything interesting these days?
+      Bart: Hoi Arnold, I'm good! You know what? We have finally rewritten our crappy monolith and we're on a full microservices deployment!
+      Arnold: Microservices? We are also doing that! How many services do you guys deploy?
+      Bart: We have about 30 services running, next to our Oracle cluster
+      Arnold: Oracle cluster?! Are you using the same old relational database for those new services?
+      Bart: Well yes, but..
+      Arnold: Then you are just faking microservices. Every service needs its own private datastore.
+      Bart: How dare you! We're so 12-factor we're 13-factor! Besides, one datastore per service? I'm sure your services are pretty fat..
+      Arnold: You dumbass! Our microservices are so micro they're nano!
+      Bart: I don't want to talk to you anymore, I hate you! (the audio beeps)
+      Arnold: I really don't like you (long beep in the audio)
+      ... both go home and start a flame war on Reddit
+
+*** Bug names
+    Hindenbug
+
+*** Visuals
+    https://kateandmaggie.files.wordpress.com/2013/03/ikea-3.png
+    http://static1.squarespace.com/static/5381fb2ee4b0b23228e0cde2/5384b731e4b0d3b0eccd1f07/5384b766e4b07bcdae128603/1424905962534/Maple%20desk%20top%20drawer%20view.png
+
+
+    Heisenbug:
+    http://www.1001freedownloads.com/free-clipart/heisenbug
+
+** Hack sheet
+
+*** Docker
+    - Build from Dockerfile:
+      docker build -t monkey/sucker .
+
+    - Tail the GOCD logs:
+      docker exec -it gocd tail -f /var/log/go-server/go-server.log
+
+    - Start FCGIWrap:
+      spawn-fcgi -s /usr/local/var/run/fcgiwrap.socket -- /usr/local/Cellar/fcgiwrap/1.1.0/sbin/fcgiwrap
+
+*** Local services
+    - Maven repo
+      http://192.168.59.3:8000
+
+*** Apps
+    - Consul
+      http://192.168.59.103:8500/ui/
+
+    - The sucker Config
+      http://192.168.59.103:8080/config
+
+    - GoCD
+      http://192.168.59.103:8153/go
+
+    - Wilderness
+      http://localhost:3000
+
+*** Possible slides progression
+    - Intro: microservices are a huge hype
+    - Fake audio conversation between Dutch startup CTO's
+    - No guidelines, no definition of micro
+    - Best qualifying features so far:
+      - minimal surface contact with the external world, say max 10 REST endpoints or equivalent
+      - fast processing time, say 50ms max latency per request
+      - fully encapsulate strict transactional behavior in one service
+      - embrace eventual consistency across the system
+      - push for statelessness
+      - prefer async over sync communication patterns
+    - Doesn't come for free
+      - distributed systems are hard
+      - async is harder than sync
+      - exponential operational overhead
+      - not great fit for inherently strict transactional systems
+    - Then why microservices?
+      - Smaller codebases
+      - Lower maintenance risk
+      - Easier SDLC, faster time to market
+      - Promotes polyglot development
+      - Promotes best practices in teams
+    - Meet the Micromonkeys
+      - Selfish gene quote
+      - High level description of the system
+      - Present the three kinds of monkeys
+      - Quick demo of Play + Infection + Grooming
+    - Microservices practice #1: strong automation
+      - Docker for a consistent deployment model
+        - Challenges: minimize footprint, security
+      - CI / CD process
+        - Present alternatices
+        - Present GoCD
+        - Show the Value Stream
+      - Present Terraform
+        - Immutable infrastructure
+        - Convergence model
+        - Plan vs Apply
+        - Demo (using GoCD)
+    - Microservices practice #2: service discovery
+      - Intro
+      - Present Consul
+        - highly distributable
+        - datacenter aware
+        - agent-based network with gossip
+      - Service registration (DEMO)
+      - Healthcheck (Demo)
+      - HTTP vs DNS (DEMO with Postman)
+        - Show how to get list of services
+        - Show code for fetching healthy services
+      - Extra features
+        - K/V store
+        - watches
+    - Microservices practice #3: sync vs async communication
+      - Show code for sync communication monkey<->monkey
+        - better pattern: use HAProxy + Consul watches
+      - Show code for async communication wilderness<->monkeys
+    - Microservices practices #4: deal with partitions
+      - CAP theorem explained
+      - Convergent replicated data types intro
+      - The clock as a counter (DEMO)
+    - Further practices
+      - How about datastores?
+      - Monitoring
+      - Self healing
+      - Circuit pattern / Bulkheading
+    - Conclusions
+      - self-check for microservices envy
+      - understand the pros and cons
+      - there's much more than just modularizing code
+      - learn to love your devops
+      - don't be a bitchy hipster when discussing microservices in the hallways
+        - (or any technical topic, for that matter)
+** Timeline
+   - 00:00 Intro
+   - 01:00 So, µservices, huh?
+   - 02:00 Meet the micromonkeys
+   - 05:00 Demo time
+   - 07:00 A closer look
+   - 09:00 Containers as deployment units
+   - 12:00 Terraform
+   - 13:00 Go CD
+   - 14:00 Consul
+   -

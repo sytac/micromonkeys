@@ -1,0 +1,189 @@
+body {
+  font-family: 'Helvetica Neue', Verdana, Helvetica, Arial, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 72px;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1.125em;
+  color: #333;
+  line-height: 1.5em;
+}
+
+h1, h2, h3 {
+  color: #000;
+}
+h1 {
+  font-size: 2.5em;
+  text-shadow: 2px 2px aquamarine, -2px -2px violet;
+}
+
+h2 {
+  font-size: 2em
+}
+
+h3 {
+  font-size: 1.5em
+}
+
+a {
+  text-decoration: none;
+  color: #09f;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.controls {
+  display: block;
+  width: 100%;
+  height: 50px;
+}
+
+.controls > div {
+  display: inline-block;
+  height: 50px;
+  vertical-align: top;
+  margin-right: 20px; 
+}
+
+.current-clock {
+  float: right;
+  margin-top: -15px;
+}
+
+.monkey {
+  width: 100%;
+}
+
+.monkey.dead {
+  border: solid 1px red;
+}
+
+.monkey > div {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 20px;
+}
+
+.status {
+  width: 50%;
+  margin-top: -10px;
+}
+
+.stats {
+  display: block;
+  width: 100%;
+}
+
+.stats > div {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  vertical-align: top;
+}
+
+.clock > span {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin-top: -15px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.health {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+}
+
+.health.dead {
+  background-color: red;
+}
+
+.health.healthy {
+  background-color: green;
+}
+
+.health.buggy {
+  background-color: orange;
+}
+
+.sucker {
+  width: 180px;
+  height: 150px;
+  background-image: url('/img/monkeys-open.png');
+  background-size: Auto 150px;
+}
+
+.sucker.closed {
+  width: 180px;
+  height: 150px;
+  background-image: url('/img/monkeys-closed.png');
+  background-size: Auto 150px;
+}
+
+.grudger {
+  width: 180px;
+  height: 150px;
+  background-image: url('/img/monkeys-open.png');
+  background-size: Auto 150px;
+  background-position: 180px 0px;
+}
+
+.grudger.closed {
+  width: 180px;
+  height: 150px;
+  background-image: url('/img/monkeys-closed.png');
+  background-size: Auto 150px;
+  background-position: 180px 0px;
+}
+
+.cheater {
+  width: 180px;
+  height: 150px;
+  background-image: url('/img/monkeys-open.png');
+  background-size: Auto 150px;
+  background-position: -185px 0px;
+}
+
+.cheater.closed {
+  width: 180px;
+  height: 150px;
+  background-image: url('/img/monkeys-closed.png');
+  background-size: Auto 150px;
+  background-position: -185px 0px;
+}
+
+
+/* Down here is the spinner  */
+.spinner {
+  width: 50px;
+  height: 50px;
+  
+  background-color: azure;
+
+  border-radius: 100%;  
+  -webkit-animation: scaleout 1.0s infinite ease-in-out;
+  animation: scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes scaleout {
+  0% { -webkit-transform: scale(0.0) }
+  100% {
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
+
+@keyframes scaleout {
+  0% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 100% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+    opacity: 0;
+  }
+}
