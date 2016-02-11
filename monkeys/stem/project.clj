@@ -16,8 +16,7 @@
                  [org.clojure/tools.logging "0.3.1"]
                  [org.apache.logging.log4j/log4j-core "2.3"]]
 
-  :plugins [[lein-midje "3.1.3"]
-            [skuro/lein-release "2.0.0"]]
+  :plugins [[lein-midje "3.1.3"]]
 
   :lein-release {:deploy-via :lein-install}
 

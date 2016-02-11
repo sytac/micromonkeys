@@ -5,15 +5,11 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :repositories [["local" {:url "http://192.168.59.3:8000"
-                           :checksum :ignore}]]
-
   :dependencies [[org.clojure/clojure "1.7.0-RC1"]
-                 [stem-monkey "0.1.1-SNAPSHOT"]
+                 [stem-monkey "0.1.2-SNAPSHOT"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]]
 
-  :plugins [[lein-midje "3.1.3"]
-            [skuro/lein-release "2.0.0"]]
+  :plugins [[lein-midje "3.1.3"]]
 
   :lein-release {:deploy-via    :lein-install
                  :build-uberjar true}

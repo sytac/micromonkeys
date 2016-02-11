@@ -99,9 +99,9 @@
 (defn monkey->groom-url
   "Builds a URL to ask a monkey to groom us"
   [monkey]
-  (let [addr (get monkeey "ServiceAddress") #_"192.168.59.103:"
+  (let [addr (get monkey "ServiceAddress") #_"192.168.59.103:"
         port ":8080" #_(get monkey "ServicePort")]
-    (str "http://"  addre port "/groom")))
+    (str "http://"  addr port "/groom")))
 
 (defn ask-grooming
   "Asks another monkey to groom us"
