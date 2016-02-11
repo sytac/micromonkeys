@@ -6,7 +6,7 @@ resource "docker_container" "sucker" {
           internal = 8080
           external = 8080
     }
-    command = ["java", "-Dmonkey=sucker", "-Dmonkey-id=1", "-Dmonkey-port=8080", "-Dmonkey-consul-endpoint=http://192.168.59.103:8500", "-jar", "sucker.jar"]
+    command = ["java", "-Dmonkey=sucker", "-Dmonkey-id=1", "-Dmonkey-port=8080", "-Dmonkey-consul-endpoint=http://192.168.99.100:8500", "-jar", "sucker.jar"]
 }
 
 resource "docker_container" "grudger" {
@@ -17,7 +17,7 @@ resource "docker_container" "grudger" {
           internal = 8080
           external = 8081
     }
-    command = ["java", "-Dmonkey=grudger", "-Dmonkey-id=1", "-Dmonkey-port=8081", "-Dmonkey-consul-endpoint=http://192.168.59.103:8500", "-jar", "grudger.jar"]
+    command = ["java", "-Dmonkey=grudger", "-Dmonkey-id=1", "-Dmonkey-port=8081", "-Dmonkey-consul-endpoint=http://192.168.99.100:8500", "-jar", "grudger.jar"]
 }
 
 resource "docker_container" "cheater" {
@@ -28,7 +28,7 @@ resource "docker_container" "cheater" {
           internal = 8080
           external = 8082
     }
-    command = ["java", "-Dmonkey=cheater", "-Dmonkey-id=1", "-Dmonkey-port=8082", "-Dmonkey-consul-endpoint=http://192.168.59.103:8500", "-jar", "cheater.jar"]
+    command = ["java", "-Dmonkey=cheater", "-Dmonkey-id=1", "-Dmonkey-port=8082", "-Dmonkey-consul-endpoint=http://192.168.99.100:8500", "-jar", "cheater.jar"]
 }
 
 resource "docker_image" "sucker" {
