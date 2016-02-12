@@ -2,7 +2,7 @@
   (:require [org.httpkit.client :as http]
             [cheshire.core :as json]))
 
-(def consul "http://192.168.59.103:8500")
+(def consul "http://192.168.99.100:8500")
 
 (defn status->health
   "Translates the Consul check status into monkey health"
@@ -49,14 +49,20 @@
         (get decoded :tick))
       (println "Bad clock response:" response))))
 
+(def horrible-hack
+  {"sucker"  "http://192.168.99.100:8080"
+   "grudger" "http://192.168.99.100:8081"
+   "cheater" "http://192.168.99.100:8082"})
+
 (defn service->clj
   "Translates the JSON document of a Service into an understandable map"
   [service]
-  (let [base-map {:service (get-in service ["Service" "Service"])
+  (let [svc-name (get-in service ["Service" "Service"])
+        base-map {:service (get-in service ["Service" "Service"])
                   :id (get-in service ["Service" "ID"])
-                  :endpoint (endpoint service)
+                  :endpoint (horrible-hack svc-name)
                   :health (health service)}
-        clock (retrieve-clock (endpoint service))]
+        clock (retrieve-clock (:endpoint base-map))]
     (if clock
       (assoc base-map :clock clock)
       base-map)))

@@ -5,6 +5,7 @@
             [clojure.tools.logging :as log])
   (:gen-class))
 
+
 (defn groom
   "Grooming behavior for the Sucker monkey: always say yes"
   [_]
