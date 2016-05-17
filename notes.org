@@ -154,4 +154,3 @@
    - 12:00 Terraform
    - 13:00 Go CD
    - 14:00 Consul
-   -
