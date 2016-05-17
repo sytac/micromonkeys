@@ -18,3 +18,4 @@
 
   :main micromonkeys.grudger
   :aot [micromonkeys.grudger])
+
