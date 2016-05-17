@@ -10,3 +10,4 @@ pom.xml.asc
 terraform.tfstate
 terraform.tfstate.backup
 .lein-failures
+.lein-repl-history
