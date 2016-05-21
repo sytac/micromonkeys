@@ -3,7 +3,7 @@
 
 (defrecord Monkey [state       ; :dead | :alive | :infested
                    channel     ; used to interact with the monkey
-                   last-tick]) ; last clock tick number ever saw by the monkey
+                   last-tick]) ; last clock tick ever saw by the monkey
 
 (defmulti apply-event :type)
 
